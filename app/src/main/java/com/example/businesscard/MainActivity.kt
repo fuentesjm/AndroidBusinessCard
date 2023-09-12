@@ -23,7 +23,12 @@ import com.example.businesscard.ui.theme.BusinessCardTheme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.sharp.Call
+import androidx.compose.material.icons.sharp.Email
+import androidx.compose.material.icons.sharp.Share
 import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.Icon
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +40,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = Color.Cyan
                 ) {
-                    GreetingImage(name = "Jose Manuel Fuentes", position = "Software Engineer",
+                    BusinessCardCompiler(name = "Jose Manuel Fuentes", position = "Software Engineer",
                         phoneNumber = "562-513-8272", tag = "@fuentesjm", email = "fuentesjose7725@gmail.com")
                 }
             }
@@ -60,8 +65,8 @@ fun GreetingText(name: String, position: String, modifier: Modifier = Modifier) 
         Text(
             text = name,
             fontSize = 40.sp,
-            lineHeight = 50.sp,
-            textAlign = TextAlign.Center
+            modifier = Modifier
+                .padding(horizontal = 65.dp)
         )
         Text(
             text = position,
@@ -79,32 +84,56 @@ fun BusinessContacts(phoneNumber: String, tag: String, email: String, modifier: 
         verticalArrangement = Arrangement.Bottom,
         modifier = modifier
     ) {
-        Text(
-            text = phoneNumber,
-            fontSize = 15.sp,
+        Row (
             modifier = Modifier
-                .padding(8.dp)
-                .align(alignment = Alignment.CenterHorizontally)
-        )
-        Text(
-            text = tag,
-            fontSize = 15.sp,
+                .padding(horizontal = 100.dp)
+        ) {
+            Icon(
+                Icons.Sharp.Call,
+                contentDescription = null
+            )
+            Text(
+                text = phoneNumber,
+                fontSize = 15.sp,
+                modifier = Modifier
+                    .padding(8.dp)
+            )
+        }
+        Row (
             modifier = Modifier
-                .padding(8.dp)
-                .align(alignment = Alignment.CenterHorizontally)
-        )
-        Text(
-            text = email,
-            fontSize = 15.sp,
+                .padding(horizontal = 100.dp)
+        ) {
+            Icon(
+                Icons.Sharp.Share,
+                contentDescription = null
+            )
+            Text(
+                text = tag,
+                fontSize = 15.sp,
+                modifier = Modifier
+                    .padding(8.dp)
+            )
+        }
+        Row (
             modifier = Modifier
-                .padding(8.dp)
-                .align(alignment = Alignment.CenterHorizontally)
-        )
+                .padding(horizontal = 100.dp)
+        ) {
+            Icon(
+                Icons.Sharp.Email,
+                contentDescription = null
+            )
+            Text(
+                text = email,
+                fontSize = 15.sp,
+                modifier = Modifier
+                    .padding(8.dp)
+            )
+        }
     }
 }
 
 @Composable
-fun GreetingImage(name: String, position: String, phoneNumber: String,
+fun BusinessCardCompiler(name: String, position: String, phoneNumber: String,
                   tag: String, email: String, modifier: Modifier = Modifier) {
     Box {
         GreetingText(
@@ -129,7 +158,7 @@ fun GreetingImage(name: String, position: String, phoneNumber: String,
 @Composable
 fun BusinessCardPreview() {
     BusinessCardTheme {
-        GreetingImage(name = "Jose Manuel Fuentes", position = "Software Engineer",
-                     phoneNumber = "+1 (562) 513 8272", tag = "@fuentesjm", email = "fuentesjose7725@gmail.com")
+        BusinessCardCompiler(name = "Jose Fuentes", position = "Software Engineer",
+                     phoneNumber = "+11 (123) 444 555", tag = "@fuentesjm", email = "johnsmith@aol.com")
     }
 }
