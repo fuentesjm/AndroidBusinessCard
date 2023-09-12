@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.businesscard.ui.theme.BusinessCardTheme
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
@@ -29,6 +30,7 @@ import androidx.compose.material.icons.sharp.Email
 import androidx.compose.material.icons.sharp.Share
 import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.Icon
+import androidx.compose.ui.layout.ContentScale
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +40,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = Color.Cyan
+                    color = MaterialTheme.colorScheme.background
                 ) {
                     BusinessCardCompiler(name = "Jose Manuel Fuentes", position = "Software Engineer",
                         phoneNumber = "562-513-8272", tag = "@fuentesjm", email = "fuentesjose7725@gmail.com")
@@ -65,12 +67,15 @@ fun GreetingText(name: String, position: String, modifier: Modifier = Modifier) 
         Text(
             text = name,
             fontSize = 40.sp,
+            color = Color.White,
             modifier = Modifier
                 .padding(horizontal = 65.dp)
+
         )
         Text(
             text = position,
             fontSize = 20.sp,
+            color = Color.White,
             modifier = Modifier
                 .padding(16.dp)
                 .align(alignment = Alignment.CenterHorizontally)
@@ -95,8 +100,9 @@ fun BusinessContacts(phoneNumber: String, tag: String, email: String, modifier: 
             Text(
                 text = phoneNumber,
                 fontSize = 15.sp,
+                color = Color.White,
                 modifier = Modifier
-                    .padding(8.dp)
+                    .padding(1.dp)
             )
         }
         Row (
@@ -110,8 +116,9 @@ fun BusinessContacts(phoneNumber: String, tag: String, email: String, modifier: 
             Text(
                 text = tag,
                 fontSize = 15.sp,
+                color = Color.White,
                 modifier = Modifier
-                    .padding(8.dp)
+                    .padding(1.dp)
             )
         }
         Row (
@@ -125,8 +132,9 @@ fun BusinessContacts(phoneNumber: String, tag: String, email: String, modifier: 
             Text(
                 text = email,
                 fontSize = 15.sp,
+                color = Color.White,
                 modifier = Modifier
-                    .padding(8.dp)
+                    .padding(5.dp)
             )
         }
     }
@@ -135,7 +143,16 @@ fun BusinessContacts(phoneNumber: String, tag: String, email: String, modifier: 
 @Composable
 fun BusinessCardCompiler(name: String, position: String, phoneNumber: String,
                   tag: String, email: String, modifier: Modifier = Modifier) {
+    val image = painterResource(R.drawable.android_wallpaper)
     Box {
+        Image(
+            painter = image,
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            alpha = 0.5F,
+            modifier = Modifier
+                .fillMaxSize()
+        )
         GreetingText(
             name = name,
             position = position,
@@ -154,7 +171,7 @@ fun BusinessCardCompiler(name: String, position: String, phoneNumber: String,
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = false)
 @Composable
 fun BusinessCardPreview() {
     BusinessCardTheme {
