@@ -45,10 +45,18 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun GreetingText(name: String, position: String, modifier: Modifier = Modifier) {
+    val icon = painterResource(R.drawable.android_logo)
     Column(
         verticalArrangement = Arrangement.Center,
         modifier = modifier
     ) {
+        Image(
+            painter = icon,
+            contentDescription = null,
+            modifier = Modifier
+                .height(90.dp)
+                .fillMaxSize()
+        )
         Text(
             text = name,
             fontSize = 40.sp,
@@ -98,16 +106,7 @@ fun BusinessContacts(phoneNumber: String, tag: String, email: String, modifier: 
 @Composable
 fun GreetingImage(name: String, position: String, phoneNumber: String,
                   tag: String, email: String, modifier: Modifier = Modifier) {
-    val icon = painterResource(R.drawable.android_logo)
     Box {
-        Image(
-            painter = icon,
-            contentDescription = null,
-            modifier = Modifier
-                .height(90.dp)
-                .align(alignment = Alignment.Center)
-                .fillMaxSize()
-        )
         GreetingText(
             name = name,
             position = position,
