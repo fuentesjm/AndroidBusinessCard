@@ -42,8 +42,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    BusinessCardCompiler(name = "Jose Manuel Fuentes", position = "Software Engineer",
-                        phoneNumber = "562-513-8272", tag = "@fuentesjm", email = "fuentesjose7725@gmail.com")
+                    BusinessCardCompiler(name = getString(R.string.business_card_name), position = getString(
+                        R.string.position
+                    ),
+                        phoneNumber = getString(R.string.phone_number), tag = getString(R.string.social_media_tag), email = getString(
+                            R.string.email_address
+                        ))
                 }
             }
         }
@@ -67,7 +71,6 @@ fun GreetingText(name: String, position: String, modifier: Modifier = Modifier) 
         Text(
             text = name,
             fontSize = 40.sp,
-            color = Color.White,
             modifier = Modifier
                 .padding(horizontal = 65.dp)
 
@@ -75,7 +78,6 @@ fun GreetingText(name: String, position: String, modifier: Modifier = Modifier) 
         Text(
             text = position,
             fontSize = 20.sp,
-            color = Color.White,
             modifier = Modifier
                 .padding(16.dp)
                 .align(alignment = Alignment.CenterHorizontally)
@@ -100,7 +102,6 @@ fun BusinessContacts(phoneNumber: String, tag: String, email: String, modifier: 
             Text(
                 text = phoneNumber,
                 fontSize = 15.sp,
-                color = Color.White,
                 modifier = Modifier
                     .padding(1.dp)
             )
@@ -116,7 +117,6 @@ fun BusinessContacts(phoneNumber: String, tag: String, email: String, modifier: 
             Text(
                 text = tag,
                 fontSize = 15.sp,
-                color = Color.White,
                 modifier = Modifier
                     .padding(1.dp)
             )
@@ -132,7 +132,6 @@ fun BusinessContacts(phoneNumber: String, tag: String, email: String, modifier: 
             Text(
                 text = email,
                 fontSize = 15.sp,
-                color = Color.White,
                 modifier = Modifier
                     .padding(5.dp)
             )
